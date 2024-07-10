@@ -221,10 +221,10 @@ def processCommand(fanController, command) :
 	elif command['cmd'] == 'control' :
 		if command['val'] == '0' and fanController.isFanOn :
 			fanController.fanOnOff(False)
-			fanController.printLog('fan off by command')
+			printLog('fan off by command')
 		elif command['val'] == '1' and not fanController.isFanOn  :
 			fanController.fanOnOff(True)
-			fanController.printLog('fan on by command')
+			printLog('fan on by command')
 
 	else :
 		printLog('unknown command received')
