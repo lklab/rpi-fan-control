@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import datetime
 import socket
@@ -217,6 +218,12 @@ def processCommand(fanController, command) :
 	elif command['cmd'] == 'off_time' :
 		fanController.setOffTime(command['val'])
 
+	elif command['cmd'] == 'control' :
+		if command['val'] == '0' and fanController.isFanOn :
+			fanController.fanOnOff(False)
+		elif command['val'] == '1' and not fanController.isFanOn  :
+			fanController.fanOnOff(True)
+
 	else :
 		printLog('unknown command received')
 
@@ -260,3 +267,4 @@ except KeyboardInterrupt :
 	sock.close()
 	fanController.stop()
 	printLog('successfully terminated')
+	sys.exit(0)
