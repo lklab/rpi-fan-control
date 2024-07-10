@@ -81,8 +81,11 @@ class FanController :
 			# control fan on/off
 			if fanOnRequired :
 				self.fanOnOff(True)
+				printLog('fan on. temp: ' + str(temperature))
+
 			elif fanOffRequired :
 				self.fanOnOff(False)
+				printLog('fan off. temp: ' + str(temperature))
 
 			# sleep
 			time.sleep(self.settings['period'])
@@ -96,7 +99,6 @@ class FanController :
 	def fanOnOff(self, isOn) :
 		self.isFanOn = isOn
 		GPIO.output(21, not isOn)
-		printLog('fan on/off changed: ' + str(isOn))
 
 	def getDefaultSettings(self) :
 		settings = {}
