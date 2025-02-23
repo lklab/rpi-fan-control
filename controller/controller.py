@@ -37,7 +37,7 @@ class Controller :
 
     def _is_within_control_off_time(self, control_off_time: str, control_on_time: str) -> bool:
         now = datetime.now().time()
-        
+
         off_time = datetime.strptime(control_off_time, "%H:%M").time()
         on_time = datetime.strptime(control_on_time, "%H:%M").time()
 
