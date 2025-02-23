@@ -37,7 +37,7 @@ class Controller :
 
     def _on_updated(self) :
         if self.interface.is_fan_on != self.fan_status.is_fan_on :
-            self.disable_time = time.monotonic() + 60.0 # 팬을 직접 제어하게 되면 60초간 on/off 상태 유지
+            self.disable_time = time.monotonic() + 60.0 # 팬 on/off 상태가 바뀐 경우 최소 60초간 상태 유지
             self.interface.set_fan_on(self.fan_status.is_fan_on)
 
     def _is_within_control_off_time(self, control_off_time: str, control_on_time: str) -> bool:
