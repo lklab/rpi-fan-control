@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package control;
+
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. proto/control.proto
+
+service FanControlService {
+  // 서버 -> 클라이언트: 상태 변경 시 서버에서 클라이언트로 스트리밍 전송
+  rpc StreamFanStatus (FanStatusRequest) returns (stream FanStatusResponse);
+
+  // 클라이언트 -> 서버: 설정 변경 요청
+  rpc SetFanConfig (FanConfigRequest) returns (FanConfigResponse);
+}
+
+// 서버 -> 클라이언트 요청 (요청 본문 없음)
+message FanStatusRequest {
+  string key = 1;
+}
+
+// 서버 -> 클라이언트 응답 (스트리밍 메시지)
+message FanStatusResponse {
+  bool is_fan_on = 1;           // 팬 on/off 상태
+  float current_temperature = 2; // 현재 온도
+  float off_temperature = 3;    // 팬 off 온도
+  float on_temperature = 4;     // 팬 on 온도
+  string control_off_time = 5;  // 온도 제어 off 시간
+  string control_on_time = 6;   // 온도 제어 on 시간
+}
+
+// 클라이언트 -> 서버 요청
+message FanConfigRequest {
+  string key = 1;
+  bool is_fan_on = 2;           // 팬 on/off 상태
+  float off_temperature = 3;    // 팬 off 온도
+  float on_temperature = 4;     // 팬 on 온도
+  string control_off_time = 5;  // 온도 제어 off 시간
+  string control_on_time = 6;   // 온도 제어 on 시간
+}
+
+// 클라이언트 -> 서버 응답 (설정 적용 여부 반환)
+message FanConfigResponse {
+  bool success = 1;
+  string message = 2;
+}

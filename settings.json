@@ -1,1 +1,6 @@
-{"enabled": true, "period": 60.0, "minTemp": 38.0, "maxTemp": 45.0, "offTime": "23:30-08:00"}
+{
+    "off_temp": 38.0,
+    "on_temp": 45.0,
+    "control_off_time": "23:30",
+    "control_on_time": "08:00"
+}
