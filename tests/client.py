@@ -12,10 +12,13 @@ import asyncio
 import grpc
 import proto.control_pb2 as control_pb2
 import proto.control_pb2_grpc as control_pb2_grpc
+import json
 
-async def receive_status_updates(stub):
+async def receive_status_updates(stub, key: str):
     """ 서버에서 상태 변경 스트리밍 받기 """
-    async for response in stub.StreamFanStatus(control_pb2.FanStatusRequest()):
+    async for response in stub.StreamFanStatus(control_pb2.FanStatusRequest(
+        key=key,
+    )):
         print(f"📢 팬 상태 변경 감지! 현재 상태:")
         print(f"    - 팬 ON: {response.is_fan_on}")
         print(f"    - 현재 온도: {response.current_temperature}°C")
@@ -36,12 +39,16 @@ async def send_fan_config(stub):
 
 async def main():
     """ gRPC 클라이언트 실행 """
+    with open('config/server_config.json', encoding='utf-8') as f :
+        config = json.load(f)
+    key: str = config['whitelist'][0]
+
     async with grpc.aio.insecure_channel('localhost:50051') as channel:
         stub = control_pb2_grpc.FanControlServiceStub(channel)
 
         # 비동기로 상태 스트리밍 수신 & 설정 변경 요청
         await asyncio.gather(
-            receive_status_updates(stub),
+            receive_status_updates(stub, key),
             # send_fan_config(stub)
         )
 

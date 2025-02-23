@@ -26,8 +26,7 @@ if _version_not_supported:
 
 
 class FanControlServiceStub(object):
-    """python -m grpc_tools.protoc -Iproto --python_out=proto/ --grpc_python_out=proto/ proto/control.proto
-    python -m grpc_tools.protoc -Iproto --python_out=./proto --grpc_python_out=./proto proto/control.proto
+    """python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. proto/control.proto
 
     """
 
@@ -50,8 +49,7 @@ class FanControlServiceStub(object):
 
 
 class FanControlServiceServicer(object):
-    """python -m grpc_tools.protoc -Iproto --python_out=proto/ --grpc_python_out=proto/ proto/control.proto
-    python -m grpc_tools.protoc -Iproto --python_out=./proto --grpc_python_out=./proto proto/control.proto
+    """python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. proto/control.proto
 
     """
 
@@ -91,8 +89,7 @@ def add_FanControlServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class FanControlService(object):
-    """python -m grpc_tools.protoc -Iproto --python_out=proto/ --grpc_python_out=proto/ proto/control.proto
-    python -m grpc_tools.protoc -Iproto --python_out=./proto --grpc_python_out=./proto proto/control.proto
+    """python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. proto/control.proto
 
     """
 

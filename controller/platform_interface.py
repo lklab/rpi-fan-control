@@ -3,7 +3,6 @@ class PlatformInterface:
 
     def __init__(self):
         self.is_rasp = self._check_raspberry_pi()
-        print(f'is_rasp: {self.is_rasp}')
 
         self.is_fan_on: bool = False
 

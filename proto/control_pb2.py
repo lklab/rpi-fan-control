@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/control.proto\x12\x07\x63ontrol\"\x12\n\x10\x46\x61nStatusRequest\"\xa7\x01\n\x11\x46\x61nStatusResponse\x12\x11\n\tis_fan_on\x18\x01 \x01(\x08\x12\x1b\n\x13\x63urrent_temperature\x18\x02 \x01(\x02\x12\x17\n\x0foff_temperature\x18\x03 \x01(\x02\x12\x16\n\x0eon_temperature\x18\x04 \x01(\x02\x12\x18\n\x10\x63ontrol_off_time\x18\x05 \x01(\t\x12\x17\n\x0f\x63ontrol_on_time\x18\x06 \x01(\t\"\x89\x01\n\x10\x46\x61nConfigRequest\x12\x11\n\tis_fan_on\x18\x01 \x01(\x08\x12\x17\n\x0foff_temperature\x18\x02 \x01(\x02\x12\x16\n\x0eon_temperature\x18\x03 \x01(\x02\x12\x18\n\x10\x63ontrol_off_time\x18\x04 \x01(\t\x12\x17\n\x0f\x63ontrol_on_time\x18\x05 \x01(\t\"5\n\x11\x46\x61nConfigResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xa6\x01\n\x11\x46\x61nControlService\x12J\n\x0fStreamFanStatus\x12\x19.control.FanStatusRequest\x1a\x1a.control.FanStatusResponse0\x01\x12\x45\n\x0cSetFanConfig\x12\x19.control.FanConfigRequest\x1a\x1a.control.FanConfigResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/control.proto\x12\x07\x63ontrol\"\x1f\n\x10\x46\x61nStatusRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\"\xa7\x01\n\x11\x46\x61nStatusResponse\x12\x11\n\tis_fan_on\x18\x01 \x01(\x08\x12\x1b\n\x13\x63urrent_temperature\x18\x02 \x01(\x02\x12\x17\n\x0foff_temperature\x18\x03 \x01(\x02\x12\x16\n\x0eon_temperature\x18\x04 \x01(\x02\x12\x18\n\x10\x63ontrol_off_time\x18\x05 \x01(\t\x12\x17\n\x0f\x63ontrol_on_time\x18\x06 \x01(\t\"\x96\x01\n\x10\x46\x61nConfigRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x11\n\tis_fan_on\x18\x02 \x01(\x08\x12\x17\n\x0foff_temperature\x18\x03 \x01(\x02\x12\x16\n\x0eon_temperature\x18\x04 \x01(\x02\x12\x18\n\x10\x63ontrol_off_time\x18\x05 \x01(\t\x12\x17\n\x0f\x63ontrol_on_time\x18\x06 \x01(\t\"5\n\x11\x46\x61nConfigResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xa6\x01\n\x11\x46\x61nControlService\x12J\n\x0fStreamFanStatus\x12\x19.control.FanStatusRequest\x1a\x1a.control.FanStatusResponse0\x01\x12\x45\n\x0cSetFanConfig\x12\x19.control.FanConfigRequest\x1a\x1a.control.FanConfigResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,13 +32,13 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.control_pb2', _global
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_FANSTATUSREQUEST']._serialized_start=32
-  _globals['_FANSTATUSREQUEST']._serialized_end=50
-  _globals['_FANSTATUSRESPONSE']._serialized_start=53
-  _globals['_FANSTATUSRESPONSE']._serialized_end=220
-  _globals['_FANCONFIGREQUEST']._serialized_start=223
-  _globals['_FANCONFIGREQUEST']._serialized_end=360
-  _globals['_FANCONFIGRESPONSE']._serialized_start=362
-  _globals['_FANCONFIGRESPONSE']._serialized_end=415
-  _globals['_FANCONTROLSERVICE']._serialized_start=418
-  _globals['_FANCONTROLSERVICE']._serialized_end=584
+  _globals['_FANSTATUSREQUEST']._serialized_end=63
+  _globals['_FANSTATUSRESPONSE']._serialized_start=66
+  _globals['_FANSTATUSRESPONSE']._serialized_end=233
+  _globals['_FANCONFIGREQUEST']._serialized_start=236
+  _globals['_FANCONFIGREQUEST']._serialized_end=386
+  _globals['_FANCONFIGRESPONSE']._serialized_start=388
+  _globals['_FANCONFIGRESPONSE']._serialized_end=441
+  _globals['_FANCONTROLSERVICE']._serialized_start=444
+  _globals['_FANCONTROLSERVICE']._serialized_end=610
 # @@protoc_insertion_point(module_scope)
