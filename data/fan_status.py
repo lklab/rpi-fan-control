@@ -1,22 +1,29 @@
 from typing import Callable
 import json
+import os
 
-SETTING_FILE_PATH = 'settings.json'
+SETTING_FILE_PATH = 'config/settings.json'
 
 class FanStatus :
     def __init__(self) :
         self.is_fan_on: bool = False
         self.current_temperature: float = 25.0
-
-        with open(SETTING_FILE_PATH, encoding='utf-8') as f :
-            json_data = json.load(f)
-
-        self.off_temperature: float = json_data['off_temp']
-        self.on_temperature: float = json_data['on_temp']
-        self.control_off_time: str = json_data['control_off_time']
-        self.control_on_time: str = json_data['control_on_time']
-
         self.update_listeners: list[Callable[[], None]] = []
+
+        if os.path.exists(SETTING_FILE_PATH):
+            with open(SETTING_FILE_PATH, encoding='utf-8') as f :
+                json_data = json.load(f)
+
+            self.off_temperature: float = json_data['off_temp']
+            self.on_temperature: float = json_data['on_temp']
+            self.control_off_time: str = json_data['control_off_time']
+            self.control_on_time: str = json_data['control_on_time']
+        else:
+            self.off_temperature: float = 38.0
+            self.on_temperature: float = 45.0
+            self.control_off_time: str = '23:30'
+            self.control_on_time: str = '08:00'
+            self.update()
 
     def add_update_listener(self, listener: Callable[[], None]) :
         self.update_listeners.append(listener)

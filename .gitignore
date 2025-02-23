@@ -175,3 +175,4 @@ cython_debug/
 
 # Custom
 server_config.json
+settings.json
